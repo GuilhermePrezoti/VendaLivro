@@ -1,6 +1,10 @@
 <?php
+    namespace PHP\Modelo\Cadastros;
 
     require_once("Endereco.php");
+
+    use PHP\Modelo\Cadastros\Endereco;
+
     class CadastroClient{
         private string $nome;
         private Endereco $endereco;
@@ -8,6 +12,7 @@
         private string $dataDeNascimento;
         private string $login;
         private string $senha;
+
 
         public function __construct(string $nome, Endereco $endereco, string $telefone, string $dataDeNascimento, string $login, string $senha){
             $this->nome = $nome;
@@ -77,6 +82,16 @@
         {
             $this->senha = $senha;
         }//fim do Set
+
+
+        public function login( CadastroClient $cont , string $usuario, string $pass){
+            if($cont-> getLogin()== $usuario && $cont-> getSenha() == $pass){
+                echo "Logado com sucesso!<br><br>";
+                return;
+            }
+            echo "Erro";
+            
+        }
 
 
 

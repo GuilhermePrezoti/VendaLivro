@@ -1,5 +1,7 @@
 <?php
-
+    
+    namespace PHP\Modelo\Cadastros;
+    
     class Endereco{
 
         private string $rua;
