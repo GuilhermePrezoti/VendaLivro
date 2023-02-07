@@ -2,28 +2,32 @@
     
     
     namespace PHP\Modelo;
-    
-    
 
-    require_once('Cadastros/Endereco.php');
-    require_once('Cadastros/Cadastro.php');
-    require_once('Lojas/Livros.php');
-    require_once('Lojas/Loja.php');
-    require_once('DAO/Conexao.php');
-    require_once('DAO/Inserir.php');
+    require_once('DAOL/Conexao.php');
+    require_once('DAOL/Inserir.php');
+    require_once('DAOL/Consultar.php');
+    require_once('DAOL/Atualizar.php');
+    require_once('DAOL/Deletar.php');
 
-    use PHP\Modelo\Cadastros\Endereco;
-    use PHP\Modelo\Cadastros\CadastroClient;
-    use PHP\Modelo\Lojas\Livros;
-    use PHP\Modelo\Lojas\Loja;
-    use PHP\Modelo\DAO\Conexao;
-    use PHP\Modelo\DAO\Inserir;
+    use PHP\Modelo\DAOL\Conexao;
+    use PHP\Modelo\DAOL\Inserir;
+    use PHP\Modelo\DAOL\Consultar;
+    use PHP\Modelo\DAOL\Atualizar;
+    use PHP\Modelo\DAOL\Deletar;
     
     $connect = new Conexao();
     $insert = new Inserir();
+    $print = new Consultar();
+    $del = new Deletar();
+    $update = new Atualizar();
     
     $connect->conectar();
-    $insert->cadastrar($connect, 'livros', 'Morro dos Ventos Uivantes', 40.99, 20);
+    $print ->consultarTudo($connect, 'livros');
+    //$insert->cadastrar($connect, 'livros', 'Morro dos Ventos Uivantes', 40.99, 20);
+    //$update ->update($connect, 'titulo', 'Crepusculo', 1, 'livros');
+    //$del ->deletar($connect, 'livros', 1);
+    //$del ->deletarTudo($connect, 'livros');
+    $update ->compra($connect, $print, $insert, 3);
 
 
 

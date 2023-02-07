@@ -1,5 +1,5 @@
 <?php 
-    namespace PHP\Modelo\DAO;
+    namespace PHP\Modelo\DAOL;
 
     require_once('Conexao.php');
 
@@ -21,6 +21,19 @@
             }catch(Except $erro){
                 echo $erro;
             }
+        }
+
+
+        public function reserva(Conexao $conexao,  int $codigo){
+            $conn = $conexao->Conectar();
+                $sql = "insert into reserva(cod, codigo) values ('', '$codigo')";
+                $result = mysqli_query($conn,$sql);//Execut as ações no BD
+                mysqli_close($conn);
+
+                if($result){
+                    return "<br><br>Inserido com sucesso!";
+                }
+                return "<br><br> Não inserido!";
         }
     }
 ?>
