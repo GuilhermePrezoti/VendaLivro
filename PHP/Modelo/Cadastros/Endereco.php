@@ -3,82 +3,37 @@
     namespace PHP\Modelo\Cadastros;
     
     class Endereco{
-
+        public int $codigo;
         private string $rua;
-        private string $numero;
         private string $cidade;
         private string $estado;
         private string $cep;
 
-        public function __construct(string $rua, string $numero, string $cidade, string $estado, string $cep){
-            $this->rua = $rua;
-            $this->numero = $numero;
-            $this->cidade = $cidade;
-            $this->estado = $estado;
-            $this->cep = $cep;
+        public function __construct(int $codigo,string $rua, string $cidade, string $estado, string $cep){
+            $this->codigo    = $codigo;
+            $this->rua       = $rua;
+            $this->cidade    = $cidade;
+            $this->estado    = $estado;
+            $this->cep       = $cep;
         }//fim do construtor
 
 
 
-        public function getRua() : string
+        public function __get($nomeVariavel) : string
         {
-            return $this->rua;
-        }//fim do Get
-        public function setRua(string $rua) : void
+            return $this->$nomeVariavel;
+        }//fim do get
+
+        public function __set(string $var, string $valor ) : void
         {
-            $this->rua = $rua;
-        }//fim do Set
+            $this->$var = $valor;
+        }//fim do set
 
-
-
-
-
-        public function getNumero() : string
+        public function __toString() : string 
         {
-            return $this->numero;
-        }//fim do Get
-        public function setNumero(string $numero) : void
-        {
-            $this->numero = $numero;
-        }//fim do Set
+            return "<br>Rua: ".$this->rua. "<br>Cidade: ".$this->cidade. "<br>Estado: ".$this->estado. "<br>CEP: ".$this->cep;
+        }//fim do toString
 
-
-
-
-
-        public function getCidade() : string
-        {
-            return $this->cidade;
-        }//fim do Get
-        public function setCidade(string $cidade) : void
-        {
-            $this->cidade = $cidade;
-        }//fim do Set
-
-
-
-
-        public function getEstado() : string
-        {
-            return $this->estado;
-        }//fim do Get
-        public function setEstado(string $estado) : void
-        {
-            $this->estado = $estado;
-        }//fim do Set
-
-
-
-
-        public function getCep() : string
-        {
-            return $this->cep;
-        }//fim do Get
-        public function setCep(string $cep) : void
-        {
-            $this->cep = $cep;
-        }//fim do Set
-
-    }//fim da class
+    }//fim da class    
 
 ?>
